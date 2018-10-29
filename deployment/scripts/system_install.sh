@@ -2,7 +2,7 @@
 
 # Update and install dependencies
 yum -y update
-yum -y install git httpd firewalld
+yum -y install git httpd firewalld figlet
 # Install PHP 7 and Modules
 yum install -y http://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/ius-release-1.0-14.ius.centos7.noarch.rpm
 yum -y update

@@ -6,12 +6,24 @@
 cd $CODEDEPLOY
 
 # Copy files to apache folder
-mv -R ./* /var/www/html
-cd /var/www/html
+echo "Files replacement"
+rm -rf --preserve-root $BACKUP
+mv $TARGET $BACKUP
+mv $TMPTARGET $TARGET
+ln -s $TARGET $CODEDEPLOY
+cd $TARGET
 
 # Change ownership of files in apache folder
-chwon -R apache:apache /var/www/html
+chown -R $USER:$GROUP $TARGET
 
 # Change SELinux config
-semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/wp-content/uploads(/.*)?"
-sudo restorecon -Rv /var/www/html/wp-content/uploads
+chcon -t httpd_sys_content_t $TARGET -R
+chcon -t httpd_sys_rw_content_t -R "/var/www/html/wp-content/uploads(/.*)?"
+#semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/wp-content/uploads(/.*)?"
+#restorecon -Rv /var/www/html/wp-content/uploads
+
+# Copy healthcheck
+cp $TARGET/deployment/configs/healthcheck.html $TARGET/
+
+# Display success
+figlet -f banner 'HURRAY!!!!!!'
