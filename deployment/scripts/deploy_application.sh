@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. /opt/angular-codedeploy/deployment/scripts/setenv.sh
+. /opt/wordpress-codedeploy/deployment/scripts/setenv.sh
 
 # Move to deploy folder
 cd $CODEDEPLOY
