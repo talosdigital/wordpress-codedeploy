@@ -6,7 +6,8 @@
 cd $CODEDEPLOY
 
 # Copy files to apache folder
-mv * /var/www/html
+mv -R ./* /var/www/html
+cd /var/www/html
 
 # Change ownership of files in apache folder
 chwon -R apache:apache /var/www/html
