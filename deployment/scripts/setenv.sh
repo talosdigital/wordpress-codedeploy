@@ -16,3 +16,8 @@ export BACKUP=/var/www/$PROJECT-backup
 # Web server user/group
 export USER=apache
 export GROUP=apache
+
+# Read variables.json
+for s in $(cat deployment/variables.json | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+    export $s
+done
