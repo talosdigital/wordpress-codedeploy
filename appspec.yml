@@ -1,0 +1,21 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /opt/angular-codedeploy
+hooks:
+  BeforeInstall:
+    - location: deployment/scripts/system_install.sh
+      timeout: 700
+      runas: root
+  AfterInstall:
+- location: deployment/scripts/system_configure.sh
+      timeout: 300
+      runas: root
+    - location: deployment/scripts/deploy_application.sh
+      timeout: 500
+      runas: root
+  ApplicationStart:
+    - location: deployment/scripts/start_services.sh
+      timeout: 300
+      runas: root
