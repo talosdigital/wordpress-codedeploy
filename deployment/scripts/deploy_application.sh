@@ -20,7 +20,7 @@ mkdir -p $TARGET/wp-content/uploads
 
 # Change SELinux config
 chcon -t httpd_sys_content_t $TARGET -R
-chcon -t httpd_sys_rw_content_t -R /var/www/$TARGET/wp-content/uploads
+chcon -t httpd_sys_rw_content_t -R $TARGET/wp-content/uploads
 #semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/wp-content/uploads(/.*)?"
 #restorecon -Rv /var/www/html/wp-content/uploads
 
