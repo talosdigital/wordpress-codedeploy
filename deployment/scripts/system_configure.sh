@@ -20,4 +20,9 @@ setsebool -P httpd_can_network_connect_db=1
 setsebool -P httpd_can_network_connect=1
 setsebool -P httpd_can_sendmail=1
 
+# Zabbix
+envsubst < $CODEDEPLOY/deployment/configs/zabbix_agentd.conf > /etc/zabbix/zabbix_agentd.conf
+systemctl restart zabbix-agent
 
+# PHP
+/bin/cp $CODEDEPLOY/deployment/configs/90-talos.ini /etc/php.d/90-talos.ini
