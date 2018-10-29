@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /opt/angular-codedeploy
+    destination: /opt/wordpress-codedeploy
 hooks:
   BeforeInstall:
     - location: deployment/scripts/system_install.sh
