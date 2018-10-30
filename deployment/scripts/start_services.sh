@@ -3,4 +3,4 @@
 # Start Web Server
 systemctl restart httpd
 
-echo "Hurray!!!"
+figlet -f banner 'Hurray!!'
