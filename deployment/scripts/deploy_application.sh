@@ -18,16 +18,14 @@ mkdir -p $TARGET/wp-content/uploads
 mkdir -p $TARGET/wp-content/cache
 mkdir -p $TARGET/wp-content/w3tc-config
 
+# Change ownership of files in apache folder
+chown -R $USER:$GROUP $TARGET
+
 # Uploads folder link
 echo "Uploads folder"
 cd $TARGET
 rsync -arv wp-content/uploads/* $TARGET/../env/$PROJECT/uploads
 rm -rf wp-content/uploads; sudo -H -u $USER bash -c "ln -s $TARGET/../env/$PROJECT/uploads ./wp-content/uploads  || true"
-
-cp $TARGET/wp-content/plugins/w3-total-cache/wp-content/advanced-cache.php $TARGET/wp-content/advanced-cache.php
-
-# Change ownership of files in apache folder
-chown -R $USER:$GROUP $TARGET
 
 # Change SELinux config
 chcon -t httpd_sys_content_t $TARGET -R
