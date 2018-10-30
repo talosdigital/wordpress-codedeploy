@@ -14,7 +14,6 @@ envsubst < $CODEDEPLOY/deployment/configs/default.conf > /etc/httpd/sites-availa
 envsubst < $CODEDEPLOY/deployment/configs/template.conf > /etc/httpd/sites-available/$PROJECT.conf
 ln -sfn /etc/httpd/sites-available/default.conf /etc/httpd/sites-enabled/default.conf
 ln -sfn /etc/httpd/sites-available/$PROJECT.conf /etc/httpd/sites-enabled/$PROJECT.conf
-systemctl reload httpd
 
 # Change SELinux configuration
 setsebool -P httpd_can_network_connect_db=1
