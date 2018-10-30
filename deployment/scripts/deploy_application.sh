@@ -30,6 +30,7 @@ rm -rf wp-content/uploads; sudo -H -u $USER bash -c "ln -s $TARGET/../env/$PROJE
 # Change SELinux config
 chcon -t httpd_sys_content_t $TARGET -R
 chcon -t httpd_sys_rw_content_t -R $TARGET/wp-content/{uploads,cache,w3tc-config}
+chcon -t httpd_sys_rw_content_t -R $TARGET/../env/$PROJECT/uploads
 
 # Copy healthcheck
 cp $TARGET/deployment/configs/healthcheck.html $TARGET/
