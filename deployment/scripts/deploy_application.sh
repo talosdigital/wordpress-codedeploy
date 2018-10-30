@@ -34,5 +34,3 @@ chcon -t httpd_sys_rw_content_t -R $TARGET/wp-content/{uploads,cache,w3tc-config
 # Copy healthcheck
 cp $TARGET/deployment/configs/healthcheck.html $TARGET/
 
-# Display success
-figlet -f banner 'Site deployed!!'
