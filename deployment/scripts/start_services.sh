@@ -1,6 +1,6 @@
 #!/bin/bash
 
 # Start Web Server
-systemctl restart httpd
+systemctl reload httpd
 
 figlet -f banner 'Hurray!!'
