@@ -2,10 +2,10 @@
 
 # Update and install dependencies
 yum -y update
-yum -y install \ 
+yum -y install \
     git figlet gcc-c++ nfs-utils \
-    firewalld httpd mod_ssl openssl \ 
-    psmisc bzip2 cyrus-sasl-plain \ 
+    firewalld httpd mod_ssl openssl \
+    psmisc bzip2 cyrus-sasl-plain \
     telnet patch net-snmp xinetd unzip jq
 
 # Install PHP 7 and Modules
